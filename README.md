@@ -8,8 +8,6 @@ This repository includes three Java-based web server implementations:
 
 Each version demonstrates a different approach to handling client connections—from basic blocking I/O to concurrent processing using threads and thread pools.
 
----
-
 ## 🚀 How to Run
 
 All servers listen on **port `8010`**. Make sure you compile and run the files from their respective directories, or set your classpaths accordingly.
@@ -19,7 +17,6 @@ All servers listen on **port `8010`**. Make sure you compile and run the files f
 - Java 11 or higher
 - A terminal or a Java-compatible IDE (e.g., VS Code, IntelliJ)
 
----
 
 ## 🛠️ Compile and Run (Example: SingleThreaded Server)
 
