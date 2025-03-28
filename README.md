@@ -18,7 +18,7 @@ All servers listen on **port `8010`**. Make sure you compile and run the files f
 - A terminal or a Java-compatible IDE (e.g., VS Code, IntelliJ)
 
 
-## 🛠️ Compile and Run (Example: SingleThreaded Server)
+## Compile and Run (Example: SingleThreaded Server)
 
 ```bash
 # Compile
@@ -32,3 +32,28 @@ java Server
 
 # In another terminal
 java Client
+```
+
+
+## 📈 Load Testing with JMeter
+
+The server was load-tested using [Apache JMeter](https://jmeter.apache.org/) to simulate high-concurrency client traffic.
+
+### 🔧 Test Setup
+- **Tool:** Apache JMeter (TCP Sampler)
+- **Load:** Simulated up to 300,000 requests per minute (~5,000 req/sec)
+- **Environment:** Local machine, single server instance
+- **Tests Conducted On:**
+  - Basic multithreaded server (new thread per connection)
+  - Thread pool-based server using `ExecutorService`
+
+### 📊 Results Comparison
+
+| Metric                     | Basic Multithreaded | Thread Pool Version |
+|----------------------------|---------------------|----------------------|
+| **Avg Response Time**      | 3605 ms             | **1880 ms** ✅        |
+| **Error Rate**             | 12.34%              | **6.09%** ✅          |
+| **Max Throughput**         | **~735 req/sec**    | ~650 req/sec         |
+| **Total Samples**          | 21,823              | 18,656               |
+
+> ✅ The thread pool server reduced error rate by ~50% and cut average response time in half, demonstrating improved stability and scalability under heavy load.
